@@ -1,4 +1,5 @@
-﻿function Piano() {
+
+function Piano() {
     this.isMouseDown = !1;
     this.play_cycle = !1;
     this.play_pause = !1;
@@ -34,12 +35,14 @@
         var n = new Date;
         return this.t2 = n.getMinutes() * 6e4 + n.getSeconds() * 1e3 + n.getMilliseconds(), this.b ? this.t2 - this.t1 : (this.b = !0, 0)
     };
-    this.music = function(n, t) {
+    this.music = function(n, t, recur = 1) {
+        if(recur == 1)ws(n);
         var i = $(n);
         i.currentTime = 0;
         i.play();
         this.delayer(n, t);
         this.record && (this.chord[this.chord.length] = n, this.time[this.time.length] = this.time[this.time.length - 1] + this.timer())
+        //predict.playon(n)
     };
     this.timereset = function(n, t) {
         for (var i = t + 1; i < n.length; i++) n[i] = n[i] - n[t];
