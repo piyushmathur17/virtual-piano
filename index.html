@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="style/pace.css" />
     <link rel="icon" type="image/x-icon" href="style/favicon.ico" />
     <script type="text/javascript" src="js/pace.min.js"></script>
-    <script type="text/javascript" src="js/predict.js"></script>
+    <script type="text/javascript" src="js/completer.js"></script>
     <script type="text/javascript" src="js/piano.js"></script>
     <script type="text/javascript" src="js/notes.js"></script>
     <script type="text/javascript" src="js/translators/translator.js"></script>
@@ -26,11 +26,27 @@
             <div id="assistd" class="text" onclick="piano.assist()">Key assist Off</div>
             <div id="recordd" class="text" onclick="win_fnc.viewer('recorder')">Recorder</div>
             <div id="sheetd" class="text" onclick="win_fnc.viewer('sheet')">Sheets</div>
+
         </div>
         <div id="white"></div>
         <div id="black"></div>
         <div id="audio" onerror="location.reload()"></div>
     </div>
+   <style>.button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 25px;
+      text-align: center;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .button:hover {
+    background-color: green;
+    }
+    </style>
+    <button class="button" onclick="completer.res()">Reset</button>
+    <button class="button" onclick="completer.predict()">Auto Complete</button>
     <div id='win'></div>
 </body>
 </html>

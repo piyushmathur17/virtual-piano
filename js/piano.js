@@ -19,6 +19,8 @@ function Piano() {
     this.play_count = 0;
     this.deff = 0;
     this.defff = 0;
+    this.lastplayed= null
+    this.lastplayedcount=1
     this.default = function() {
         this.play_count = 0;
         this.indexes = [0];
@@ -36,7 +38,8 @@ function Piano() {
         return this.t2 = n.getMinutes() * 6e4 + n.getSeconds() * 1e3 + n.getMilliseconds(), this.b ? this.t2 - this.t1 : (this.b = !0, 0)
     };
     this.music = function(n, t, recur = 1) {
-        if(recur == 1)ws(n);
+        
+        if(notesPlayed.length<=10)notesPlayed.push(n);
         var i = $(n);
         i.currentTime = 0;
         i.play();
@@ -53,14 +56,17 @@ function Piano() {
         function r(i, r, u, f) {
             setTimeout(function() {
                 if (piano.stp && !n) piano.stp_cycle || (win_fnc.hider(), select("s1", -1), piano.default(), piano.stp_cycle = !0, piano.chord = [""]);
-                else if (piano.play_pause && !n) piano.play_cycle || (piano.nmb = piano.play_count + 1, piano.chord = piano.msx[1], piano.indexes = piano.msx[2], piano.time = piano.timereset(piano.msx[0], piano.nmb), piano.play_cycle = !0);
+                else if (piano.play_pause && !n) piano.play_cycle || (piano.nmb = piano.play_count + 1, piano.chord = piano.msx[1], 
+                     piano.indexes = piano.msx[2], piano.time = piano.timereset(piano.msx[0], piano.nmb), piano.play_cycle = !0);
                 else if (!piano.play_pause && !piano.record) try {
-                    piano.deff == u && (n || select("s1", f - 1, f), r[0] == "a" ? piano.music(r, 1) : piano.music(r, 3), piano.play_count++, piano.play_count == piano.nmb - 1 && (n ? t.value = "● Record" : (win_fnc.hider(), select("s1", -1)), piano.play_pause = !1, piano.default(), piano.b = !1))
+                    piano.deff == u && (n || select("s1", f - 1, f), r[0] == "a" ? piano.music(r, 1) : piano.music(r, 3), 
+                    piano.play_count++, piano.play_count == piano.nmb - 1 && (n ? t.value = "● Record" : (win_fnc.hider(), select("s1", -1)), piano.play_pause = !1, piano.default(), piano.b = !1))
                 } catch (i) {}
             }, i)
         }
         var t = $("recplay"),
             i = $("sheet_play");
+        console.log(recplay,$("sheetplay"),$("sheet_choose"));
         if (this.deff++, n) t.value == "● Record" ? ($("s1").placeholder = "Recording...", t.value = "■ Stop", i.focus(), $("s1").value = "", win_fnc.hider(), this.record = !0) : (t.value = "● Record", $("s1").placeholder = "Sheet", retrans.compile(), this.default(), this.record = !1);
         else if (this.record && (retrans.compile(), this.default(), this.record = !1), $("s1").value != "" && (i.value == "▌▌ Pause" ? (i.value = "► Play", this.play_pause = !0) : (i.value = "▌▌ Pause", t.value == "■ Stop" && (t.value = "● Record"), this.play_pause = !1, this.play_cycle = !1, this.stp_cycle = !1, this.stp = !1), $("sheet_stop").style.visibility = "visible", $("sheet_stop_sep").style.visibility = "visible", this.chord.length <= 1 && (this.msx = trans.compile(), this.time = this.msx[0], this.chord = this.msx[1], this.indexes = this.msx[2])), !this.play_pause)
             while (this.nmb != this.chord.length) r(this.time[this.nmb], this.chord[this.nmb], this.deff, this.indexes[this.nmb]), this.nmb++
@@ -93,4 +99,5 @@ function Piano() {
         }, 150)
     }
 }
+var notesPlayed=[]
 var piano = new Piano;
