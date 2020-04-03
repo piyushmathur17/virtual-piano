@@ -1,18 +1,9 @@
-# VirtualPiano
+# GhostPiano
 Browser based virtual piano, based on javascript and HTML5.  
-[**Here**](http://otanim.github.io/virtual-piano/) you can try out **Virtul Piano** online.
+[**Here**](https://thepianoproject170.web.app/) you can try out **Ghost Piano** online.
 
 # About
-This is my first public project that I've created when I supposingly to learn JavaScript in 2014.  
-All sources have been created from scratch.
-
-# Copyright
-All Rights Reserved, please see the LICENSE file.  
-The company **Cristal Magic Studio Ltd** which owns https://virtualpiano.net website, plagiarized this project under their website without mentioning the real source.
-
-## Demonstration
-[**YouTube**](https://www.youtube.com/watch?v=jFusXg5g1Gw)
-
+I've forked this project from www.github.com/otanim/virtual-piano and added the autocomplete functionality. The deep learning model can be found in the predictor model file and uses keras lstm network with tensorflow backend and was trained on the music sequences in js/db/music_list. This was my first time working with javascript. 
 ## Screenshots
 ### Piano
 ![alt text](https://raw.githubusercontent.com/ArmanYeghiazaryan/VirtualPiano/master/screenshots/piano.gif "Piano")
