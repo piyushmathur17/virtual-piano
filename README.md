@@ -20,3 +20,5 @@ The company **Cristal Magic Studio Ltd** which owns https://virtualpiano.net web
 ![alt text](https://raw.githubusercontent.com/ArmanYeghiazaryan/VirtualPiano/master/screenshots/sheets.gif "Sheets")
 ### Recorder
 ![alt text](https://raw.githubusercontent.com/ArmanYeghiazaryan/VirtualPiano/master/screenshots/recorder.gif "Recorder")
+### Auto Complete
+Play any tune and click on auto complete to let the app finish the tune for you! Don't forget to click on reset to start a new tune to complete.
